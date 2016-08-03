@@ -5,7 +5,6 @@ import (
 	"algorithm-go/adt"
 )
 
-
 func TestQueue_add(t *testing.T) {
 	node1 := adt.Node{Value:1}
 	node2 := adt.Node{Value:2}
@@ -16,7 +15,6 @@ func TestQueue_add(t *testing.T) {
 	q.add(&node1)
 	q.add(&node2)
 	q.add(&node3)
-
 
 	if q.first().Value != node1.Value {
 		t.Errorf("Testing fails: first value error")

@@ -1,14 +1,16 @@
 package stack
 
-import "testing"
-
+import (
+	"testing"
+	"algorithm-go/adt"
+)
 
 func TestStack_Push(t *testing.T) {
-	var node1 Node = Node{value:1}
-	var node2 Node = Node{value:2}
-	var node3 Node = Node{value:3}
-	var node4 Node = Node{value:4}
-	var node5 Node = Node{value:5}
+	var node1 adt.Node = adt.Node{Value:1}
+	var node2 adt.Node = adt.Node{Value:2}
+	var node3 adt.Node = adt.Node{Value:3}
+	var node4 adt.Node = adt.Node{Value:4}
+	var node5 adt.Node = adt.Node{Value:5}
 
 	s := MakeStack()
 
@@ -18,15 +20,15 @@ func TestStack_Push(t *testing.T) {
 	s.Push(&node4)
 	s.Push(&node5)
 
-	if s.Top().value != node5.value {
+	if s.Top().Value != node5.Value {
 		t.Errorf("Testing fails")
 	}
 }
 
 func TestStack_Pop(t *testing.T) {
-	var node1 Node = Node{value:1}
-	var node2 Node = Node{value:2}
-	var node3 Node = Node{value:3}
+	var node1 adt.Node = adt.Node{Value:1}
+	var node2 adt.Node = adt.Node{Value:2}
+	var node3 adt.Node = adt.Node{Value:3}
 
 	s := MakeStack()
 	s.Push(&node1)
@@ -36,7 +38,7 @@ func TestStack_Pop(t *testing.T) {
 	s.Pop()
 	s.Pop()
 
-	if s.Top().value != node1.value {
+	if s.Top().Value != node1.Value {
 		t.Errorf("Testing fails")
 	}
 }
