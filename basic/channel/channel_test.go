@@ -218,7 +218,17 @@ func TestChannel18(t *testing.T) {
 	<-ch
 }
 
-
+/*
+Q:下面的程序会阻塞吗?
+A:不会,关闭channel,对无缓冲的channel,关闭时,也不会阻塞
+ */
+func TestChannel19(t *testing.T) {
+	c := make(chan bool)
+	go func(){
+		close(c)
+	}()
+	<-c
+}
 
 
 
