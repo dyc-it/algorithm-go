@@ -143,7 +143,7 @@ func TestChannel14(t *testing.T) {
 	go func() {
 		fmt.Println("Hello")
 	}()
-	for ;;{
+	for ; ; {
 
 	}
 }
@@ -157,7 +157,7 @@ func TestChannel15(t *testing.T) {
 	go func() {
 		fmt.Println("Hello")
 	}()
-	for ;;{
+	for ; ; {
 
 	}
 }
@@ -174,22 +174,22 @@ ret4=0, ok4=false;ok为false表示channel被关闭并且缓冲区中没有数据
 
 func TestChannel16(t *testing.T) {
 	ch := make(chan int, 3)
-	ch <-1
-	ch <-2
-	ch <-3
+	ch <- 1
+	ch <- 2
+	ch <- 3
 
-	ret1, ok1 := <- ch
+	ret1, ok1 := <-ch
 	fmt.Println(ret1, ok1)
 
 	close(ch)
 
-	ret2, ok2 := <- ch
+	ret2, ok2 := <-ch
 	fmt.Println(ret2, ok2)
 
-	ret3, ok3 := <- ch
+	ret3, ok3 := <-ch
 	fmt.Println(ret3, ok3)
 
-	ret4, ok4 := <- ch
+	ret4, ok4 := <-ch
 	fmt.Println(ret4, ok4)
 }
 
@@ -201,10 +201,10 @@ A:死锁
  */
 func TestChannel17(t *testing.T) {
 	ch := make(chan int, 3)
-	ch <-1
-	ch <-2
-	ch <-3
-	ch <-4
+	ch <- 1
+	ch <- 2
+	ch <- 3
+	ch <- 4
 }
 
 

@@ -33,14 +33,14 @@ func (s *MaxMinStack) Push(node *adt.Node) {
 	} else {
 		// when size is not 1, if value is less than the top of minstack, push less value
 		// to minstack, else push the top of minstack to minstack
-		if s.minStack.Top().Value > node.Value {
+		if s.minStack.Top().Value.(int) > node.Value.(int) {
 			s.minStack.Push(node)
 		} else {
 			s.minStack.Push(s.minStack.Top())
 		}
 
 		// similar to minstack
-		if s.maxStack.Top().Value < node.Value {
+		if s.maxStack.Top().Value.(int) < node.Value.(int) {
 			s.maxStack.Push(node)
 		} else {
 			s.maxStack.Push(s.maxStack.Top())

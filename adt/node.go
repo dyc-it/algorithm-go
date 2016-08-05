@@ -1,5 +1,5 @@
 package adt
 
 type Node struct {
-	Value int
+	Value interface{}
 }
