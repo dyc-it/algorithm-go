@@ -12,38 +12,38 @@ type Tree struct {
 	Value interface{}
 }
 
-func (tree *Tree) pre_order() {
+func (tree *Tree) Pre_order() {
 	fmt.Print(tree.Value)
 	if tree.Left != nil {
-		tree.Left.pre_order()
+		tree.Left.Pre_order()
 	}
 	if tree.Right != nil {
-		tree.Right.pre_order()
+		tree.Right.Pre_order()
 	}
 }
 
-func (tree *Tree) in_order() {
+func (tree *Tree) In_order() {
 	if tree.Left != nil {
-		tree.Left.in_order()
+		tree.Left.In_order()
 	}
 	fmt.Print(tree.Value)
 	if tree.Right != nil {
-		tree.Right.in_order()
+		tree.Right.In_order()
 	}
 
 }
 
-func (tree *Tree) post_order() {
+func (tree *Tree) Post_order() {
 	if tree.Left != nil {
-		tree.Left.post_order()
+		tree.Left.Post_order()
 	}
 	if tree.Right != nil {
-		tree.Right.post_order()
+		tree.Right.Post_order()
 	}
 	fmt.Print(tree.Value)
 }
 
-func (tree *Tree) level_order() {
+func (tree *Tree) Level_order() {
 	q := queue.MakeQueue()
 	for tree != nil {
 		fmt.Print(tree.Value)

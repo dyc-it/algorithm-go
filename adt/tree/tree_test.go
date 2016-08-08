@@ -23,19 +23,19 @@ var nodeC Tree = Tree{nil, &nodeF, "C"}
 var nodeA Tree = Tree{&nodeB, &nodeC, "A"}
 
 func TestPre_order(t *testing.T) {
-	nodeA.pre_order()
+	nodeA.Pre_order()
 }
 
 func TestIn_order(t *testing.T) {
-	nodeA.in_order()
+	nodeA.In_order()
 }
 
 func TestPost_order(t *testing.T) {
-	nodeA.post_order()
+	nodeA.Post_order()
 }
 
 func TestLevel_order(t *testing.T) {
-	nodeA.level_order()
+	nodeA.Level_order()
 }
 
 
