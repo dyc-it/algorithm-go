@@ -1,6 +1,6 @@
 package sort
 
-func bubble_sort(array []int) []int {
+func bubble_sort(array []int) {
 	var count int = len(array)
 	for i := 0; i < count; i++ {
 		for j := 0; j < count - 1; j++ {
@@ -9,5 +9,4 @@ func bubble_sort(array []int) []int {
 			}
 		}
 	}
-	return array
 }
