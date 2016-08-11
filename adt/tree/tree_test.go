@@ -7,14 +7,16 @@ import "testing"
 //               A
 //          B         C
 //       D     E          F
-//      G H
+//            G H        I
 
 var nodeG Tree = Tree{nil, nil, "G"}
 var nodeH Tree = Tree{nil, nil, "H"}
-var nodeF Tree = Tree{nil, nil, "F"}
+var nodeI Tree = Tree{nil, nil, "I"}
 
-var nodeD Tree = Tree{&nodeG, &nodeH, "D"}
-var nodeE Tree = Tree{nil, nil, "E"}
+var nodeF Tree = Tree{&nodeI, nil, "F"}
+
+var nodeD Tree =  Tree{nil, nil,"D"}
+var nodeE Tree =  Tree{&nodeG, &nodeH,"E"}
 
 var nodeB Tree = Tree{&nodeD, &nodeE, "B"}
 
