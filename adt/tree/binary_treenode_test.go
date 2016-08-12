@@ -3,6 +3,7 @@ package tree
 import (
 	"testing"
 	"fmt"
+	"container/list"
 )
 
 
@@ -27,17 +28,18 @@ var nodeC BinaryTreeNode = BinaryTreeNode{nil, &nodeF, "C"}
 
 var nodeA BinaryTreeNode = BinaryTreeNode{&nodeB, &nodeC, "A"}
 
-func TestPreOrderRecursive(t *testing.T) {
-	nodeA.PreOrderRecursive()
-	fmt.Println()
-}
 
-func TestPreOrderNonRecursive(t *testing.T) {
+/*
+判断是遍历的结果是否和期望值一直,不一致则输出异常信息
+ */
+func assert(expected []string, ret *list.List, t *testing.T) {
 	i := 0
-	expected := []string{"A", "B", "D", "E", "G", "H", "C", "F", "I"}
 	length := len(expected)
+	// 如果返回的list长度为0,需要加入判断;否则后面的for语句无法执行
+	if ret.Len() < length {
+		t.Errorf("Level order tranverse failed!\t The amount of expected nodes is more than tranverse")
+	}
 
-	ret := nodeA.PreOrder()
 	for iter := ret.Front(); iter != nil; iter = iter.Next() {
 		//fmt.Print(iter.Value)
 		if i >= length {
@@ -48,6 +50,18 @@ func TestPreOrderNonRecursive(t *testing.T) {
 		}
 		i++
 	}
+}
+
+
+func TestPreOrderRecursive(t *testing.T) {
+	nodeA.PreOrderRecursive()
+	fmt.Println()
+}
+
+func TestPreOrderNonRecursive(t *testing.T) {
+	expected := []string{"A", "B", "D", "E", "G", "H", "C", "F", "I"}
+	ret := nodeA.PreOrder()
+	assert(expected, ret, t)
 }
 
 func TestInOrder(t *testing.T) {
@@ -56,27 +70,9 @@ func TestInOrder(t *testing.T) {
 }
 
 func TestInOrderNonRecursive(t *testing.T) {
-	i := 0
 	expected := []string{"D", "B", "G", "E", "H", "A", "C", "I", "F"}
-	length := len(expected)
-
 	ret := nodeA.InOrder()
-
-	// 如果返回的list长度为0,需要加入判断;否则后面的for语句无法执行
-	if ret.Len() < length {
-		t.Errorf("Level order tranverse failed!\t The amount of expected nodes is more than tranverse")
-	}
-
-	for iter := ret.Front(); iter != nil; iter = iter.Next() {
-		//fmt.Print(iter.Value)
-		if i >= length {
-			t.Errorf("Level order tranverse failed!\t The amount of expected nodes is less than tranverse")
-		}
-		if i < length && expected[i] != iter.Value {
-			t.Errorf("Level order tranverse failed!\texpected: %s, get: %s", expected[i], iter.Value)
-		}
-		i++
-	}
+	assert(expected, ret, t)
 }
 
 func TestPostOrder(t *testing.T) {
@@ -85,51 +81,15 @@ func TestPostOrder(t *testing.T) {
 }
 
 func TestPostOrderNonRecursive(t *testing.T) {
-	i := 0
 	expected := []string{"D", "G", "H", "E", "B", "I", "F", "C", "A"}
-	length := len(expected)
-
 	ret := nodeA.PostOrder()
-
-	// 如果返回的list长度为0,需要加入判断;否则后面的for语句无法执行
-	if ret.Len() < length {
-		t.Errorf("Level order tranverse failed!\t The amount of expected nodes is more than tranverse")
-	}
-
-	for iter := ret.Front(); iter != nil; iter = iter.Next() {
-		//fmt.Print(iter.Value)
-		if i >= length {
-			t.Errorf("Level order tranverse failed!\t The amount of expected nodes is less than tranverse")
-		}
-		if i < length && expected[i] != iter.Value {
-			t.Errorf("Level order tranverse failed!\texpected: %s, get: %s", expected[i], iter.Value)
-		}
-		i++
-	}
+	assert(expected, ret, t)
 }
 
 func TestLevelOrder(t *testing.T) {
-	i := 0
 	expected := []string{"A", "B", "C", "D", "E", "F", "G", "H", "I"}
-	length := len(expected)
-
 	ret := nodeA.LevelOrder()
-
-	// 如果返回的list长度为0,需要加入判断;否则后面的for语句无法执行
-	if ret.Len() < length {
-		t.Errorf("Level order tranverse failed!\t The amount of expected nodes is more than tranverse")
-	}
-
-	for iter := ret.Front(); iter != nil; iter = iter.Next() {
-		//fmt.Print(iter.Value)
-		if i >= length {
-			t.Errorf("Level order tranverse failed!\t The amount of expected nodes is less than tranverse")
-		}
-		if i < length && expected[i] != iter.Value {
-			t.Errorf("Level order tranverse failed!\texpected: %s, get: %s", expected[i], iter.Value)
-		}
-		i++
-	}
+	assert(expected, ret, t)
 }
 
 
