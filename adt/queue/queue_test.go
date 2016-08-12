@@ -47,13 +47,13 @@ func TestQueue_delete(t *testing.T) {
 
 func TestQueue_is_empty(t *testing.T) {
 	q := MakeQueue()
-	if !q.Is_empty() {
+	if !q.IsEmpty() {
 		t.Errorf("Testing fails: is_empty error")
 	}
 
 	node1 := adt.Node{Value:1}
 	q.Add(&node1)
-	if q.Is_empty() {
+	if q.IsEmpty() {
 		t.Errorf("Testing fails: is_empty error")
 	}
 }

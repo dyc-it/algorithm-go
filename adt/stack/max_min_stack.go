@@ -27,11 +27,13 @@ func MakeMaxMinStack() *MaxMinStack {
 
 func (s *MaxMinStack) Push(node *adt.Node) {
 	s.dataStack.Push(node)
-	if s.dataStack.size == 1 {
+
+	// if maxStack is empty, means the dataStack has one node.
+	if s.maxStack.IsEmpty() {
 		s.maxStack.Push(node)
 		s.minStack.Push(node)
 	} else {
-		// when size is not 1, if value is less than the top of minstack, push less value
+		// when minstack is not empty, if value is less than the top of minstack, push less value
 		// to minstack, else push the top of minstack to minstack
 		if s.minStack.Top().Value.(int) > node.Value.(int) {
 			s.minStack.Push(node)

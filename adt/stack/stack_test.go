@@ -5,13 +5,13 @@ import (
 	"algorithm-go/adt"
 )
 
-func TestStack_Push(t *testing.T) {
-	var node1 adt.Node = adt.Node{Value:1}
-	var node2 adt.Node = adt.Node{Value:2}
-	var node3 adt.Node = adt.Node{Value:3}
-	var node4 adt.Node = adt.Node{Value:4}
-	var node5 adt.Node = adt.Node{Value:5}
+var node1 adt.Node = adt.Node{Value:1}
+var node2 adt.Node = adt.Node{Value:2}
+var node3 adt.Node = adt.Node{Value:3}
+var node4 adt.Node = adt.Node{Value:4}
+var node5 adt.Node = adt.Node{Value:5}
 
+func TestStack_Push(t *testing.T) {
 	s := MakeStack()
 
 	s.Push(&node1)
@@ -26,10 +26,6 @@ func TestStack_Push(t *testing.T) {
 }
 
 func TestStack_Pop(t *testing.T) {
-	var node1 adt.Node = adt.Node{Value:1}
-	var node2 adt.Node = adt.Node{Value:2}
-	var node3 adt.Node = adt.Node{Value:3}
-
 	s := MakeStack()
 	s.Push(&node1)
 	s.Push(&node2)
@@ -42,3 +38,28 @@ func TestStack_Pop(t *testing.T) {
 		t.Errorf("Testing fails")
 	}
 }
+
+func TestStack_IsEmpty(t *testing.T) {
+	s := MakeStack()
+	s.Push(&node1)
+	s.Push(&node2)
+	s.Push(&node3)
+
+	s.Pop()
+	s.Pop()
+
+	// node1 remains in stack
+	if s.IsEmpty() {
+		t.Errorf("Testing fails")
+	}
+
+	// stack is empty
+	s.Pop()
+	if !s.IsEmpty() {
+		t.Errorf("Testing fails")
+	}
+
+	// 是否处理了栈为空时,再弹出的情况
+	s.Pop()
+}
+

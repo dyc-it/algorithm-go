@@ -1,34 +1,44 @@
 package stack
 
-import "algorithm-go/adt"
+import (
+	"algorithm-go/adt"
+	"container/list"
+)
 
 type Stack struct {
 	nodes []*adt.Node
 	size  int
+	list  *list.List
 }
 
 func MakeStack() *Stack {
-	return &Stack{nodes:make([]*adt.Node, 0)}
+	return &Stack{list:list.New()}
 }
 
 func (s *Stack) Push(node *adt.Node) {
-	s.nodes = append(s.nodes, node)
-	s.size++
+	s.list.PushFront(node)
 }
 
 func (s *Stack) Pop() *adt.Node {
-	if s.size == 0 {
+	if s.IsEmpty() {
 		return nil
+	} else {
+		element := s.list.Front()
+		s.list.Remove(element)
+		node := element.Value.(*adt.Node)
+		return node
 	}
-	s.size--
-	return s.nodes[s.size - 1]
 }
 
 func (s *Stack) Top() *adt.Node {
-	if s.size == 0 {
+	if s.IsEmpty() {
 		return nil
+	} else {
+		node := s.list.Front().Value.(*adt.Node)
+		return node
 	}
-	return s.nodes[s.size - 1]
 }
 
-
+func (s *Stack) IsEmpty() bool {
+	return s.list.Len() == 0
+}

@@ -46,7 +46,7 @@ func (q *Queue) Delete() *adt.Node {
 
 }
 
-func (q *Queue) Is_empty() bool {
+func (q *Queue) IsEmpty() bool {
 	return q.list.Len() == 0
 }
 
