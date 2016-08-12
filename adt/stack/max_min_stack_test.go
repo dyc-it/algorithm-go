@@ -1,15 +1,15 @@
 package stack
 
 import (
-	"testing"
 	"algorithm-go/adt"
+	"testing"
 )
 
-var node1_max_min adt.Node = adt.Node{Value:1}
-var node2_max_min adt.Node = adt.Node{Value:2}
-var node3_max_min adt.Node = adt.Node{Value:3}
-var node4_max_min adt.Node = adt.Node{Value:4}
-var node5_max_min adt.Node = adt.Node{Value:5}
+var node1_max_min adt.Node = adt.Node{Value: 1}
+var node2_max_min adt.Node = adt.Node{Value: 2}
+var node3_max_min adt.Node = adt.Node{Value: 3}
+var node4_max_min adt.Node = adt.Node{Value: 4}
+var node5_max_min adt.Node = adt.Node{Value: 5}
 
 func TestMaxMinStack_Push(t *testing.T) {
 	s := MakeMaxMinStack()
@@ -66,14 +66,3 @@ func TestMaxMinStack_Max(t *testing.T) {
 		t.Errorf("Testing fails")
 	}
 }
-
-
-
-
-
-
-
-
-
-
-

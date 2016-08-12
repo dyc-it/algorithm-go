@@ -2,7 +2,6 @@ package stack
 
 import "algorithm-go/adt"
 
-
 /*
 	MaxMinStack provide max and min function to get the max and min value of the stack.
 	To do so, three basic stack is needed; it cannot be done by variables, the reason if following:
@@ -14,7 +13,7 @@ import "algorithm-go/adt"
 	351(push)	1
 	35(pop)		?, obviously the value of top() is 5, and is not the min value
 
- */
+*/
 type MaxMinStack struct {
 	dataStack *Stack
 	maxStack  *Stack
@@ -22,7 +21,7 @@ type MaxMinStack struct {
 }
 
 func MakeMaxMinStack() *MaxMinStack {
-	return &MaxMinStack{dataStack:MakeStack(), maxStack:MakeStack(), minStack:MakeStack()}
+	return &MaxMinStack{dataStack: MakeStack(), maxStack: MakeStack(), minStack: MakeStack()}
 }
 
 func (s *MaxMinStack) Push(node *adt.Node) {
@@ -67,7 +66,3 @@ func (s *MaxMinStack) Max() *adt.Node {
 func (s *MaxMinStack) Min() *adt.Node {
 	return s.minStack.Top()
 }
-
-
-
-

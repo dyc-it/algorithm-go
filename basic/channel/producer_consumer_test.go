@@ -8,7 +8,7 @@ import (
 
 const TOTAL int = 10
 
-func Producer(queue chan <- int) {
+func Producer(queue chan<- int) {
 	for i := 0; i < TOTAL; i++ {
 		queue <- i
 	}
@@ -24,7 +24,7 @@ func Consumer(queue <-chan int) {
 /*
 Q:函数的输出是?
 A:没有输出,因为主线程没有阻塞,直接结束
- */
+*/
 func TestProducerConsumer1(t *testing.T) {
 	queue := make(chan int)
 	go Producer(queue)
@@ -37,6 +37,3 @@ func TestProducerConsumer2(t *testing.T) {
 	go Consumer(queue)
 	time.Sleep(2 * time.Second) //让Producer与Consumer完成
 }
-
-
-

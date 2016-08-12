@@ -1,15 +1,15 @@
 package stack
 
 import (
-	"testing"
 	"algorithm-go/adt"
+	"testing"
 )
 
-var node1 adt.Node = adt.Node{Value:1}
-var node2 adt.Node = adt.Node{Value:2}
-var node3 adt.Node = adt.Node{Value:3}
-var node4 adt.Node = adt.Node{Value:4}
-var node5 adt.Node = adt.Node{Value:5}
+var node1 adt.Node = adt.Node{Value: 1}
+var node2 adt.Node = adt.Node{Value: 2}
+var node3 adt.Node = adt.Node{Value: 3}
+var node4 adt.Node = adt.Node{Value: 4}
+var node5 adt.Node = adt.Node{Value: 5}
 
 func TestStack_Push(t *testing.T) {
 	s := MakeStack()
@@ -62,4 +62,3 @@ func TestStack_IsEmpty(t *testing.T) {
 	// 是否处理了栈为空时,再弹出的情况
 	s.Pop()
 }
-

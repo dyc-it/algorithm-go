@@ -4,7 +4,6 @@ import (
 	"testing"
 )
 
-
 /*
 the correct output
 A---->C
@@ -14,7 +13,7 @@ A---->C
 B---->A
 B---->C
 A---->C
- */
+*/
 func TestHanoi_tower(t *testing.T) {
 	startTower := "A"
 	middleTower := "B"

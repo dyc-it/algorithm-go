@@ -1,14 +1,14 @@
 package queue
 
 import (
-	"testing"
 	"algorithm-go/adt"
+	"testing"
 )
 
 func TestQueue_add(t *testing.T) {
-	node1 := adt.Node{Value:1}
-	node2 := adt.Node{Value:2}
-	node3 := adt.Node{Value:3}
+	node1 := adt.Node{Value: 1}
+	node2 := adt.Node{Value: 2}
+	node3 := adt.Node{Value: 3}
 
 	q := MakeQueue()
 
@@ -25,9 +25,9 @@ func TestQueue_add(t *testing.T) {
 }
 
 func TestQueue_delete(t *testing.T) {
-	node1 := adt.Node{Value:1}
-	node2 := adt.Node{Value:2}
-	node3 := adt.Node{Value:3}
+	node1 := adt.Node{Value: 1}
+	node2 := adt.Node{Value: 2}
+	node3 := adt.Node{Value: 3}
 
 	q := MakeQueue()
 
@@ -51,10 +51,9 @@ func TestQueue_is_empty(t *testing.T) {
 		t.Errorf("Testing fails: is_empty error")
 	}
 
-	node1 := adt.Node{Value:1}
+	node1 := adt.Node{Value: 1}
 	q.Add(&node1)
 	if q.IsEmpty() {
 		t.Errorf("Testing fails: is_empty error")
 	}
 }
-

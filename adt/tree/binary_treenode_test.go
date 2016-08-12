@@ -1,11 +1,10 @@
 package tree
 
 import (
-	"testing"
-	"fmt"
 	"container/list"
+	"fmt"
+	"testing"
 )
-
 
 // The structure of example tree
 //               A
@@ -28,10 +27,9 @@ var nodeC BinaryTreeNode = BinaryTreeNode{nil, &nodeF, "C"}
 
 var nodeA BinaryTreeNode = BinaryTreeNode{&nodeB, &nodeC, "A"}
 
-
 /*
 判断是遍历的结果是否和期望值一直,不一致则输出异常信息
- */
+*/
 func assert(expected []string, ret *list.List, t *testing.T) {
 	i := 0
 	length := len(expected)
@@ -51,7 +49,6 @@ func assert(expected []string, ret *list.List, t *testing.T) {
 		i++
 	}
 }
-
 
 func TestPreOrderRecursive(t *testing.T) {
 	nodeA.PreOrderRecursive()
@@ -91,5 +88,3 @@ func TestLevelOrder(t *testing.T) {
 	ret := nodeA.LevelOrder()
 	assert(expected, ret, t)
 }
-
-

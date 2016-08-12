@@ -2,9 +2,7 @@ package tree
 
 import (
 	"testing"
-	"fmt"
 )
-
 
 // The structure of example tree
 //               A
@@ -27,27 +25,28 @@ var binarySearchTreeNodeC BinaryTreeNode = BinaryTreeNode{nil, &binarySearchTree
 
 var binarySearchTreeNodeA BinaryTreeNode = BinaryTreeNode{&binarySearchTreeNodeB, &binarySearchTreeNodeC, "A"}
 
-
 var binarySearchTree BinaryTree = BinaryTree{&binarySearchTreeNodeA}
 
-func TestBinarySearchTreePre_order(t *testing.T) {
-	binarySearchTree.root.PreOrderRecursive()
-	fmt.Println()
+func TestBinarySearchTreePreOrder(t *testing.T) {
+	expected := []string{"A", "B", "D", "E", "G", "H", "C", "F", "I"}
+	ret := binarySearchTree.PreOrder()
+	assert(expected, ret, t)
 }
 
-func TestBinarySearchTreeIn_order(t *testing.T) {
-	binarySearchTreeNodeA.InOrderRecursive()
-	fmt.Println()
+func TestBinarySearchTreeInOrder(t *testing.T) {
+	expected := []string{"D", "B", "G", "E", "H", "A", "C", "I", "F"}
+	ret := binarySearchTree.InOrder()
+	assert(expected, ret, t)
 }
 
-func TestBinarySearchTreePost_order(t *testing.T) {
-	binarySearchTreeNodeA.PostOrderRecursive()
-	fmt.Println()
+func TestBinarySearchTreePostOrder(t *testing.T) {
+	expected := []string{"D", "G", "H", "E", "B", "I", "F", "C", "A"}
+	ret := binarySearchTree.PostOrder()
+	assert(expected, ret, t)
 }
 
-func TestBinarySearchTreeNodeLevel_order(t *testing.T) {
-	binarySearchTreeNodeA.LevelOrder()
-	fmt.Println()
+func TestBinarySearchTreeLevelOrder(t *testing.T) {
+	expected := []string{"A", "B", "C", "D", "E", "F", "G", "H", "I"}
+	ret := binarySearchTree.LevelOrder()
+	assert(expected, ret, t)
 }
-
-

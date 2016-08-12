@@ -1,8 +1,8 @@
 package problem
 
 import (
-	"testing"
 	"strconv"
+	"testing"
 )
 
 func TestIsPrime(t *testing.T) {

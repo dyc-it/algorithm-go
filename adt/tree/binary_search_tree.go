@@ -1,38 +1,25 @@
 package tree
 
+import "container/list"
+
 type BinarySearchTree struct {
 	root *BinaryTreeNode
 }
 
-
-func (tree *BinarySearchTree) Pre_order() {
-	tree.Pre_order()
+func (tree *BinarySearchTree) PreOrder() (ret *list.List) {
+	return tree.root.PreOrder()
 }
 
-func (tree *BinarySearchTree) In_order() {
-	tree.In_order()
+func (tree *BinarySearchTree) InOrder() (ret *list.List) {
+	return tree.root.InOrder()
 }
 
-func (tree *BinarySearchTree) Post_order() {
-	tree.Post_order()
+func (tree *BinarySearchTree) PostOrder() (ret *list.List) {
+	return tree.root.PostOrder()
 }
 
-func (tree *BinarySearchTree) Level_order() {
-	tree.Level_order()
+func (tree *BinarySearchTree) LevelOrder() (ret *list.List) {
+	return tree.root.LevelOrder()
 }
-
-
-
-
-
-
-
-
-
 
 // 二叉查找树的方法:插入、删除、搜索
-
-
-
-
-

@@ -12,7 +12,7 @@ type Stack struct {
 }
 
 func MakeStack() *Stack {
-	return &Stack{list:list.New()}
+	return &Stack{list: list.New()}
 }
 
 func (s *Stack) Push(node *adt.Node) {

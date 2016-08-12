@@ -1,11 +1,11 @@
 package tree
 
 import (
-	"fmt"
-	"algorithm-go/adt/queue"
 	"algorithm-go/adt"
-	"container/list"
+	"algorithm-go/adt/queue"
 	"algorithm-go/adt/stack"
+	"container/list"
+	"fmt"
 )
 
 type BinaryTreeNode struct {
@@ -16,7 +16,7 @@ type BinaryTreeNode struct {
 
 /*
 二叉树的递归先序遍历
- */
+*/
 func (node *BinaryTreeNode) PreOrderRecursive() {
 	fmt.Print(node.Value)
 	if node.Left != nil {
@@ -27,7 +27,6 @@ func (node *BinaryTreeNode) PreOrderRecursive() {
 	}
 }
 
-
 /*
 二叉树的非递归先序遍历
 思路:
@@ -36,7 +35,7 @@ func (node *BinaryTreeNode) PreOrderRecursive() {
 3)出栈,重复2),栈为空时停止
 
 TODO:写几个demo,便于理解
- */
+*/
 func (node *BinaryTreeNode) PreOrder() (ret *list.List) {
 	if node == nil {
 		return nil
@@ -63,7 +62,7 @@ func (node *BinaryTreeNode) PreOrder() (ret *list.List) {
 
 /*
 二叉树的递归中序遍历
- */
+*/
 func (node *BinaryTreeNode) InOrderRecursive() {
 	if node.Left != nil {
 		node.Left.InOrderRecursive()
@@ -86,7 +85,7 @@ func (node *BinaryTreeNode) InOrderRecursive() {
 直到栈为空并且当前节点N为nil
 
 TODO:写几个demo,便于理解
- */
+*/
 func (node *BinaryTreeNode) InOrder() (ret *list.List) {
 	if node == nil {
 		return nil
@@ -135,7 +134,7 @@ func (node *BinaryTreeNode) PostOrderRecursive() {
 
 
 TODO:写几个demo,便于理解
- */
+*/
 func (node *BinaryTreeNode) PostOrder() (ret *list.List) {
 	if node == nil {
 		return nil

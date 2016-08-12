@@ -12,7 +12,7 @@ package sort
 3.	递归
 对左右区间重复“取基准数”和“分区两个步骤”，递归结束条件：每个区间只有一个数
 
- */
+*/
 func quick_sort(array []int, start int, end int) {
 	if start < end {
 		i := start
@@ -40,7 +40,7 @@ func quick_sort(array []int, start int, end int) {
 		}
 
 		array[i] = base
-		quick_sort(array, start, i - 1)
-		quick_sort(array, i + 1, end)
+		quick_sort(array, start, i-1)
+		quick_sort(array, i+1, end)
 	}
 }

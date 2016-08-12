@@ -10,7 +10,7 @@ type Queue struct {
 }
 
 func MakeQueue() *Queue {
-	return &Queue{list:list.New()}
+	return &Queue{list: list.New()}
 }
 
 func (q *Queue) First() *adt.Node {
@@ -49,10 +49,3 @@ func (q *Queue) Delete() *adt.Node {
 func (q *Queue) IsEmpty() bool {
 	return q.list.Len() == 0
 }
-
-
-
-
-
-
-

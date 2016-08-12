@@ -13,7 +13,7 @@ type Homework struct {
 }
 
 func student(hwChan chan Homework, num int) {
-	hwChan <- Homework{num:num}
+	hwChan <- Homework{num: num}
 }
 
 func teacher(hwChan chan Homework) {
@@ -34,10 +34,3 @@ func TestHomework1(t *testing.T) {
 
 	time.Sleep(3 * time.Second)
 }
-
-
-
-
-
-
-
