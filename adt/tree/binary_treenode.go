@@ -9,9 +9,10 @@ import (
 )
 
 type BinaryTreeNode struct {
-	Left  *BinaryTreeNode
-	Right *BinaryTreeNode
-	Value interface{}
+	Left   *BinaryTreeNode
+	Right  *BinaryTreeNode
+	Value  interface{}
+	Parent *BinaryTreeNode
 }
 
 /*

@@ -2,51 +2,67 @@ package tree
 
 import (
 	"testing"
+	"container/list"
 )
 
 // The structure of example tree
-//               A
-//          B         C
-//       D     E          F
-//            G H        I
 
-var binarySearchTreeNodeG BinaryTreeNode = BinaryTreeNode{nil, nil, "G"}
-var binarySearchTreeNodeH BinaryTreeNode = BinaryTreeNode{nil, nil, "H"}
-var binarySearchTreeNodeI BinaryTreeNode = BinaryTreeNode{nil, nil, "I"}
 
-var binarySearchTreeNodeF BinaryTreeNode = BinaryTreeNode{&binarySearchTreeNodeI, nil, "F"}
+var arrayForMakingTree = []int{1, 0, 2, 3, 9, 4, 5, 8, 6, 7}
+var tree BinarySearchTree = BinarySearchTree{nil}
 
-var binarySearchTreeNodeD BinaryTreeNode = BinaryTreeNode{nil, nil, "D"}
-var binarySearchTreeNodeE BinaryTreeNode = BinaryTreeNode{&binarySearchTreeNodeG, &binarySearchTreeNodeH, "E"}
+func assertInt(expected []int, ret *list.List, t *testing.T) {
+	i := 0
+	length := len(expected)
+	// 如果返回的list长度为0,需要加入判断;否则后面的for语句无法执行
+	if ret.Len() < length {
+		t.Errorf("tranverse failed!\t The amount of expected nodes is more than tranverse")
+	}
 
-var binarySearchTreeNodeB BinaryTreeNode = BinaryTreeNode{&binarySearchTreeNodeD, &binarySearchTreeNodeE, "B"}
+	for iter := ret.Front(); iter != nil; iter = iter.Next() {
+		//fmt.Print(iter.Value)
+		if i >= length {
+			t.Errorf("tranverse failed!\t The amount of expected nodes is less than tranverse")
+		}
+		if i < length && expected[i] != iter.Value {
+			t.Errorf("Level order tranverse failed!\texpected: %s, get: %s", expected[i], iter.Value)
+		}
+		i++
+	}
+}
 
-var binarySearchTreeNodeC BinaryTreeNode = BinaryTreeNode{nil, &binarySearchTreeNodeF, "C"}
+func TestBinarySearchTreeInsert(t *testing.T) {
+	tree.makeBSTreeFromArray(arrayForMakingTree)
 
-var binarySearchTreeNodeA BinaryTreeNode = BinaryTreeNode{&binarySearchTreeNodeB, &binarySearchTreeNodeC, "A"}
-
-var binarySearchTree BinaryTree = BinaryTree{&binarySearchTreeNodeA}
+	ret := tree.InOrder()
+	expected := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+	assertInt(expected, ret, t)
+}
 
 func TestBinarySearchTreePreOrder(t *testing.T) {
-	expected := []string{"A", "B", "D", "E", "G", "H", "C", "F", "I"}
-	ret := binarySearchTree.PreOrder()
-	assert(expected, ret, t)
+	tree.makeBSTreeFromArray(arrayForMakingTree)
+	expected := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+	ret := tree.PreOrder()
+	assertInt(expected, ret, t)
 }
 
 func TestBinarySearchTreeInOrder(t *testing.T) {
-	expected := []string{"D", "B", "G", "E", "H", "A", "C", "I", "F"}
-	ret := binarySearchTree.InOrder()
-	assert(expected, ret, t)
+	tree.makeBSTreeFromArray(arrayForMakingTree)
+	expected := []int{1}
+	ret := tree.InOrder()
+	assertInt(expected, ret, t)
 }
 
 func TestBinarySearchTreePostOrder(t *testing.T) {
-	expected := []string{"D", "G", "H", "E", "B", "I", "F", "C", "A"}
-	ret := binarySearchTree.PostOrder()
-	assert(expected, ret, t)
+	tree.makeBSTreeFromArray(arrayForMakingTree)
+	expected := []int{4, 7, 8, 5, 2, 9, 6, 3, 1}
+	ret := tree.PostOrder()
+	assertInt(expected, ret, t)
 }
 
 func TestBinarySearchTreeLevelOrder(t *testing.T) {
-	expected := []string{"A", "B", "C", "D", "E", "F", "G", "H", "I"}
-	ret := binarySearchTree.LevelOrder()
-	assert(expected, ret, t)
+	tree.makeBSTreeFromArray(arrayForMakingTree)
+	expected := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+	ret := tree.LevelOrder()
+	assertInt(expected, ret, t)
 }
